@@ -18,9 +18,11 @@ class CreateSpeakersTable extends Migration
             $table->string('name');
             $table->text('bio');
             $table->string('photo')->nullable();
-            $table->unsignedBigInteger('event_id');
+            $table->unsignedInteger('event_id');
             $table->timestamps();
+            $table->softDeletes();
 
+            // Add events table foreign key
             $table->foreign('event_id')
                 ->references('id')
                 ->on('events')
